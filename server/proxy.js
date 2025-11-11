@@ -7,6 +7,21 @@
 const http = require('http');
 const https = require('https');
 const url = require('url');
+const fs = require('fs');
+const path = require('path');
+
+// Cargar variables de entorno desde .env.local en desarrollo local
+const envPath = path.join(__dirname, '..', '.env.local');
+if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf-8');
+    envContent.split('\n').forEach(line => {
+        const [key, value] = line.split('=');
+        if (key && value) {
+            process.env[key.trim()] = value.trim();
+        }
+    });
+    console.log('✅ Variables de entorno cargadas desde .env.local');
+}
 
 // Configuración
 // La API key debe venir de una variable de entorno (no almacenada en el repositorio)

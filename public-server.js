@@ -2,6 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const http = require('http');
+const fs = require('fs');
+
+// Cargar variables de entorno desde .env.local en desarrollo local
+if (fs.existsSync(path.join(__dirname, '.env.local'))) {
+    const envContent = fs.readFileSync(path.join(__dirname, '.env.local'), 'utf-8');
+    envContent.split('\n').forEach(line => {
+        const [key, value] = line.split('=');
+        if (key && value) {
+            process.env[key.trim()] = value.trim();
+        }
+    });
+    console.log('✅ Variables de entorno cargadas desde .env.local');
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
