@@ -6,6 +6,15 @@ const http = require('http');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Fail-fast en producción: asegurar que la clave de Gemini esté presente
+if (process.env.NODE_ENV === 'production') {
+    if (!process.env.GEMINI_API_KEY) {
+        console.error('✖️ GEMINI_API_KEY no está definida en el entorno. Abortando inicio en producción.');
+        console.error('   Añade GEMINI_API_KEY en Vercel (Project → Settings → Environment Variables) y redeploy.');
+        process.exit(1);
+    }
+}
+
 // Habilitar CORS para que funcione desde cualquier ubicación
 app.use(cors({
     origin: '*',
