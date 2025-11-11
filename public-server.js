@@ -74,8 +74,8 @@ app.get('/health', (req, res) => {
     });
 });
 
-// Servir index.html para todas las rutas
-app.get('*', (req, res) => {
+// Servir index.html para todas las rutas (SPA - Single Page Application)
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
