@@ -53,18 +53,106 @@ body {
 }
 
 /* Background Animation */
-body::before {
-    content: '';
+/* ═══════════════════════════════════════════════════════════════════════
+   ANIMATED BACKGROUND WITH PARTICLES
+   ═══════════════════════════════════════════════════════════════════════ */
+
+#particles-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(6, 214, 208, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: float linear infinite;
+}
+
+.particle.size-1 {
+    width: 2px;
+    height: 2px;
+    opacity: 0.3;
+}
+
+.particle.size-2 {
+    width: 4px;
+    height: 4px;
+    opacity: 0.4;
+}
+
+.particle.size-3 {
+    width: 6px;
+    height: 6px;
+    opacity: 0.5;
+}
+
+.particle.color-cyan {
+    background: radial-gradient(circle, #06d6d0, rgba(6, 214, 208, 0.3));
+    box-shadow: 0 0 10px rgba(6, 214, 208, 0.5);
+}
+
+.particle.color-teal {
+    background: radial-gradient(circle, #0ea5e9, rgba(14, 165, 233, 0.3));
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+}
+
+.particle.color-blue {
+    background: radial-gradient(circle, #60a5fa, rgba(96, 165, 250, 0.3));
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(6, 214, 208, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(96, 165, 250, 0.08) 0%, transparent 50%);
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background: 
+            radial-gradient(ellipse at 20% 30%, rgba(6, 214, 208, 0.15) 0%, transparent 40%),
+            radial-gradient(ellipse at 80% 70%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+            radial-gradient(ellipse at 50% 50%, rgba(96, 165, 250, 0.08) 0%, transparent 50%);
+    }
+    50% {
+        background: 
+            radial-gradient(ellipse at 30% 50%, rgba(6, 214, 208, 0.2) 0%, transparent 40%),
+            radial-gradient(ellipse at 70% 40%, rgba(14, 165, 233, 0.2) 0%, transparent 40%),
+            radial-gradient(ellipse at 50% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+    }
 }
 
 .container {
@@ -1133,6 +1221,106 @@ header p {
     padding: 40px;
     color: var(--accent-color);
     font-size: 1.3em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ADVANCED ANIMATIONS & EFFECTS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Card entrance animation */
+.vocab-card, .story-card, .dialogue-card, .stat-item, .recommendation-card {
+    animation: cardEntrance 0.6s cubic-bezier(0.23, 1, 0.320, 1) backwards;
+}
+
+.vocab-card:nth-child(1) { animation-delay: 0.05s; }
+.vocab-card:nth-child(2) { animation-delay: 0.1s; }
+.vocab-card:nth-child(3) { animation-delay: 0.15s; }
+.vocab-card:nth-child(4) { animation-delay: 0.2s; }
+.vocab-card:nth-child(5) { animation-delay: 0.25s; }
+.vocab-card:nth-child(n+6) { animation-delay: 0.3s; }
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Smooth text animations */
+.text-fade-in {
+    animation: textFadeIn 0.6s ease-out;
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating animation for emphasized elements */
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* Enhanced button animations */
+button, .btn, .tab-btn, .vocab-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before, .btn::before, .tab-btn::before, .vocab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    z-index: 1;
+}
+
+button:hover::before, .btn:hover::before, .tab-btn:hover::before, .vocab-btn:hover::before {
+    left: 100%;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhance existing glow animations */
+.glowing {
+    animation: enhancedGlow 2s ease-in-out infinite;
+}
+
+@keyframes enhancedGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(6, 214, 208, 0.3), 0 0 30px rgba(6, 214, 208, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(6, 214, 208, 0.6), 0 0 50px rgba(6, 214, 208, 0.3);
+    }
 }
 
 @media (max-width: 768px) {
