@@ -1,0 +1,74 @@
+🎮 GAMING VOCAB - INICIO RÁPIDO
+
+════════════════════════════════════════════════════════════
+
+✅ TODO ESTÁ CONFIGURADO Y LISTO PARA USAR
+
+════════════════════════════════════════════════════════════
+
+📋 PASO 1: VERIFICAR NODE.JS
+
+Abre terminal/CMD y escribe:
+    node --version
+    
+Si no ves una versión, instala Node.js desde: https://nodejs.org
+
+════════════════════════════════════════════════════════════
+
+🚀 PASO 2: INICIAR EL SERVIDOR PROXY
+
+EN LINUX O MAC:
+    cd english-gaming-vocab/server
+    chmod +x start.sh
+    ./start.sh
+
+EN WINDOWS:
+    cd english-gaming-vocab\server
+    start.bat
+    
+O en cualquier sistema:
+    cd english-gaming-vocab/server
+    node proxy.js
+
+Verás un mensaje como:
+    ✅ Gaming Vocab Proxy Server iniciado
+    📍 Dirección: http://localhost:3000
+    🔗 Endpoint API: http://localhost:3000/api/generate
+    ⚡ Listo para procesar solicitudes...
+
+════════════════════════════════════════════════════════════
+
+🌐 PASO 3: ABRIR LA APLICACIÓN
+
+En tu navegador, abre:
+    http://localhost/english-gaming-vocab/index.html
+    
+Si necesitas un servidor local:
+    - Python: python -m http.server 8000
+    - Node: npx http-server
+    - Luego: http://localhost:8000/english-gaming-vocab/index.html
+
+════════════════════════════════════════════════════════════
+
+✨ ¡LISTO! 
+
+Tu aplicación Gaming Vocab ya debería estar funcionando con:
+    ✅ Vocabulario completo
+    ✅ Profesor de IA (Gemini)
+    ✅ Generador de historias
+    ✅ Diálogos interactivos
+    ✅ Exámenes y pruebas
+    ✅ Seguimiento de progreso
+
+════════════════════════════════════════════════════════════
+
+❓ ¿PROBLEMAS?
+
+1. Verifica que el servidor proxy está corriendo en otra terminal
+2. Asegúrate que el puerto 3000 está disponible
+3. Abre DevTools (F12) y mira la consola para errores
+4. Lee PROXY_SETUP_GUIDE.md para solución de problemas
+
+════════════════════════════════════════════════════════════
+
+¡A aprender inglés de videojuegos! 🎮📚

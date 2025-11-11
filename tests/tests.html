@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Tests - Gaming Vocab</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .pass { color: green; }
+    .fail { color: red; }
+    #results { margin-top: 20px; }
+    pre { background:#f6f8fa; padding:10px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <h1>Pruebas automáticas (navegador)</h1>
+  <p>Abre este archivo en tu navegador (file://) para ejecutar pruebas sin instalar Node/NPM.</p>
+
+  <div id="summary">Ejecutando pruebas...</div>
+  <div id="results"></div>
+
+  <!-- Provide a mock allVocabulary before loading project scripts -->
+  <script>
+    // A small mock vocabulary (ordered by frequency)
+    window.allVocabulary = [
+      { word: 'attack', category: 'combat', pronunciation: 'əˈtæk', meaning: 'to hit', example: 'Attack the enemy' },
+      { word: 'health', category: 'combat', pronunciation: 'hɛlθ', meaning: 'life points', example: 'Your health is low' },
+      { word: 'jump', category: 'movement', pronunciation: 'dʒʌmp', meaning: 'to leap', example: 'Jump over the pit' },
+      { word: 'run', category: 'movement', pronunciation: 'rʌn', meaning: 'to move fast', example: 'Run to the gate' },
+      { word: 'sword', category: 'items', pronunciation: 'sɔrd', meaning: 'a blade', example: 'Equip the sword' },
+      { word: 'potion', category: 'items', pronunciation: 'ˈpoʊʃən', meaning: 'healing item', example: 'Drink the potion' },
+      { word: 'menu', category: 'interface', pronunciation: 'ˈmɛnju', meaning: 'UI menu', example: 'Open the menu' },
+      { word: 'quest', category: 'general', pronunciation: 'kwɛst', meaning: 'mission', example: 'Complete the quest' },
+      { word: 'boss', category: 'npcs', pronunciation: 'bɒs', meaning: 'main enemy', example: 'Defeat the boss' },
+      { word: 'loot', category: 'items', pronunciation: 'luːt', meaning: 'collected items', example: 'Collect loot' }
+    ];
+    window.studiedWords = new Set();
+  </script>
+
+  <!-- Load project scripts (only what's needed) -->
+  <script src="../settings.js"></script>
+  <script src="../advanced.js"></script>
+
+  <!-- Test runner -->
+  <script src="tests-runner.js"></script>
+</body>
+</html>

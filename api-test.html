@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Prueba API Gemini</title>
+    <style>
+        body {
+            background: #0a0e27;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00d4ff;
+        }
+        
+        h1 {
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            background: rgba(26, 26, 46, 0.9);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 3px solid #00ff88;
+        }
+        
+        button {
+            background: #00d4ff;
+            color: #0a0e27;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px 10px 0;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #00ff88;
+            transform: scale(1.05);
+        }
+        
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .output {
+            background: #000;
+            border: 1px solid #00d4ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        
+        .log-success { color: #00ff88; }
+        .log-error { color: #ff006e; }
+        .log-info { color: #00d4ff; }
+        .log-warning { color: #ffa500; }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .status.testing { background: #ffa500; color: #000; }
+        .status.success { background: #00ff88; color: #000; }
+        .status.error { background: #ff006e; color: #fff; }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #00d4ff;
+            background: #000;
+            color: #00ff88;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Prueba de API Gemini 2.5 Flash</h1>
+        
+        <div class="test-section">
+            <h2>📋 Información de Configuración</h2>
+            <p id="config-info"></p>
+        </div>
+        
+        <div class="test-section">
+            <h2>🧪 Prueba Simple</h2>
+            <p>Una prueba básica para verificar que la API responde:</p>
+            <button onclick="testSimple()">Enviar Prueba Simple</button>
+            <div id="simple-output" class="output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>✏️ Prompt Personalizado</h2>
+            <p>Escribe tu propio prompt para probar:</p>
+            <textarea id="custom-prompt" rows="4" placeholder="Ej: Explica qué es un 'buff' en videojuegos">Explica qué es un 'boss' en videojuegos en español</textarea>
+            <button onclick="testCustom()">Enviar Prompt Personalizado</button>
+            <div id="custom-output" class="output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔍 Diagnóstico Detallado</h2>
+            <button onclick="runDiagnostics()">Ejecutar Diagnóstico Completo</button>
+            <div id="diagnostics-output" class="output"></div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // Mostrar configuración
+        function showConfig() {
+            const info = document.getElementById('config-info');
+            info.innerHTML = `
+                <strong>API Key:</strong> ${GEMINI_API_KEY.substring(0, 20)}...${GEMINI_API_KEY.substring(GEMINI_API_KEY.length - 5)}<br>
+                <strong>URL:</strong> ${GEMINI_API_URL}<br>
+                <strong>Status:</strong> <span class="status success">✅ Configurado</span>
+            `;
+        }
+
+        // Log mejorado
+        function log(output, message, type = 'info') {
+            const classes = {
+                'success': 'log-success',
+                'error': 'log-error',
+                'info': 'log-info',
+                'warning': 'log-warning'
+            };
+            
+            const entry = document.createElement('div');
+            entry.className = 'log-entry ' + (classes[type] || classes.info);
+            
+            const emoji = {
+                'success': '✅',
+                'error': '❌',
+                'info': 'ℹ️',
+                'warning': '⚠️'
+            };
+            
+            entry.textContent = `${emoji[type]} ${message}`;
+            output.appendChild(entry);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        // Test simple
+        async function testSimple() {
+            const output = document.getElementById('simple-output');
+            output.innerHTML = '';
+            output.innerHTML = '<span class="status testing">⏳ Probando...</span>';
+            
+            try {
+                log(output, 'Iniciando prueba simple...', 'info');
+                log(output, `URL: ${GEMINI_API_URL}`, 'info');
+                
+                const response = await callGeminiAPI(
+                    'Di "¡Hola! Soy el profesor IA del Gaming Vocab Master" en una sola línea.'
+                );
+                
+                if (response.includes('Error')) {
+                    log(output, `Respuesta con error: ${response}`, 'error');
+                    output.innerHTML += '<span class="status error">❌ Error</span>';
+                } else {
+                    log(output, `Respuesta recibida: ${response.substring(0, 100)}...`, 'success');
+                    output.innerHTML += `<span class="status success">✅ Éxito</span><div style="margin-top: 10px; background: #1a1a2e; padding: 10px; border-radius: 5px;">Respuesta completa:<br>${response}</div>`;
+                }
+            } catch (error) {
+                log(output, `Excepción: ${error.message}`, 'error');
+                output.innerHTML += '<span class="status error">❌ Error</span>';
+            }
+        }
+
+        // Test personalizado
+        async function testCustom() {
+            const output = document.getElementById('custom-output');
+            const prompt = document.getElementById('custom-prompt').value;
+            
+            if (!prompt.trim()) {
+                alert('Por favor escribe un prompt');
+                return;
+            }
+            
+            output.innerHTML = '';
+            output.innerHTML = '<span class="status testing">⏳ Enviando prompt personalizado...</span>';
+            
+            try {
+                log(output, `Prompt: "${prompt}"`, 'info');
+                
+                const response = await callGeminiAPI(prompt);
+                
+                if (response.includes('Error')) {
+                    log(output, `Error: ${response}`, 'error');
+                    output.innerHTML += '<span class="status error">❌ Error</span>';
+                } else {
+                    log(output, 'Respuesta recibida correctamente', 'success');
+                    output.innerHTML += `<span class="status success">✅ Éxito</span><div style="margin-top: 10px; background: #1a1a2e; padding: 10px; border-radius: 5px;">Respuesta:<br>${response}</div>`;
+                }
+            } catch (error) {
+                log(output, `Excepción: ${error.message}`, 'error');
+                output.innerHTML += '<span class="status error">❌ Error</span>';
+            }
+        }
+
+        // Diagnóstico completo
+        async function runDiagnostics() {
+            const output = document.getElementById('diagnostics-output');
+            output.innerHTML = '';
+            
+            log(output, '🔍 Iniciando diagnóstico completo...', 'info');
+            
+            // Verificar configuración
+            log(output, `API Key presente: ${GEMINI_API_KEY ? '✅' : '❌'}`, 'info');
+            log(output, `URL configurada: ${GEMINI_API_URL}`, 'info');
+            
+            // Verificar función callGeminiAPI
+            log(output, `callGeminiAPI disponible: ${typeof callGeminiAPI === 'function' ? '✅' : '❌'}`, 'info');
+            
+            // Test de conectividad
+            log(output, 'Probando conectividad básica...', 'info');
+            
+            try {
+                const testResponse = await fetch(GEMINI_API_URL + '?key=' + GEMINI_API_KEY, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: 'test' }]
+                        }],
+                        generationConfig: {
+                            maxOutputTokens: 10,
+                            temperature: 0.7
+                        }
+                    })
+                });
+                
+                log(output, `Status HTTP: ${testResponse.status}`, 'info');
+                
+                if (testResponse.ok) {
+                    log(output, 'Conectividad: ✅ OK', 'success');
+                    const data = await testResponse.json();
+                    log(output, `Respuesta parseada correctamente`, 'success');
+                    
+                    if (data.candidates) {
+                        log(output, 'Estructura: candidates encontrado ✅', 'success');
+                    } else if (data.error) {
+                        log(output, `Error en respuesta: ${data.error.message}`, 'error');
+                    }
+                } else {
+                    log(output, `HTTP Error: ${testResponse.status}`, 'error');
+                    const errorData = await testResponse.json();
+                    log(output, `Error: ${JSON.stringify(errorData).substring(0, 100)}`, 'error');
+                }
+            } catch (error) {
+                log(output, `Error de conectividad: ${error.message}`, 'error');
+            }
+            
+            log(output, 'Diagnóstico completado', 'info');
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', showConfig);
+    </script>
+</body>
+</html>

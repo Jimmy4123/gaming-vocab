@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación del Proxy - Gaming Vocab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border-left: 4px solid #ddd;
+        }
+        
+        .check-item.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        
+        .check-item.error {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+        
+        .check-item.loading {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        
+        .icon {
+            font-size: 24px;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .text {
+            flex: 1;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+        }
+        
+        .status {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: #155724;
+        }
+        
+        .error-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: #721c24;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Gaming Vocab - Verificación del Proxy</h1>
+        <div class="subtitle">Verificando que todo está configurado correctamente</div>
+        
+        <div id="checks">
+            <div class="check-item loading">
+                <div class="icon">⏳</div>
+                <div class="text">
+                    <span class="label">Verificando proxy...</span>
+                </div>
+            </div>
+        </div>
+        
+        <button id="openApp" disabled>Abrir Gaming Vocab</button>
+        <button id="retryBtn" onclick="location.reload()" style="margin-top: 10px; background: #6c757d;">Reintentar</button>
+    </div>
+
+    <script>
+        const checksContainer = document.getElementById('checks');
+        const openAppBtn = document.getElementById('openApp');
+        const PROXY_URL = 'http://localhost:3000';
+        
+        let allChecks = true;
+        
+        async function runChecks() {
+            checksContainer.innerHTML = '';
+            
+            // Check 1: Proxy Health
+            await checkProxy();
+            
+            // Check 2: API Endpoint
+            await checkAPIEndpoint();
+            
+            // Check 3: localStorage
+            checkLocalStorage();
+            
+            // Check 4: config-proxy.js
+            checkConfigProxy();
+            
+            // Check 5: config.js
+            checkConfig();
+            
+            // Final status
+            updateFinalStatus();
+        }
+        
+        async function checkProxy() {
+            const item = createCheckItem('⏳', 'Conexión al Proxy', 'Verificando...');
+            checksContainer.appendChild(item);
+            
+            try {
+                const response = await fetch(`${PROXY_URL}/health`, {
+                    method: 'GET',
+                    timeout: 5000
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    updateCheckItem(item, '✅', 'Conexión al Proxy', `Conectado a ${PROXY_URL}`, 'success');
+                } else {
+                    updateCheckItem(item, '❌', 'Conexión al Proxy', `Código de estado: ${response.status}`, 'error');
+                    allChecks = false;
+                }
+            } catch (error) {
+                updateCheckItem(item, '❌', 'Conexión al Proxy', 
+                    `No se puede conectar a ${PROXY_URL}. ¿El servidor está corriendo?`, 'error');
+                allChecks = false;
+            }
+        }
+        
+        async function checkAPIEndpoint() {
+            const item = createCheckItem('⏳', 'Endpoint API', 'Verificando...');
+            checksContainer.appendChild(item);
+            
+            try {
+                const response = await fetch(`${PROXY_URL}/api/generate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        prompt: 'test',
+                        systemPrompt: 'test'
+                    })
+                });
+                
+                if (response.ok) {
+                    updateCheckItem(item, '✅', 'Endpoint API', 'Endpoint /api/generate accesible', 'success');
+                } else if (response.status === 400) {
+                    updateCheckItem(item, '✅', 'Endpoint API', 'Endpoint responde correctamente', 'success');
+                } else {
+                    updateCheckItem(item, '⚠️', 'Endpoint API', `Status: ${response.status}`, 'loading');
+                }
+            } catch (error) {
+                updateCheckItem(item, '❌', 'Endpoint API', error.message, 'error');
+                allChecks = false;
+            }
+        }
+        
+        function checkLocalStorage() {
+            const item = createCheckItem('⏳', 'localStorage', 'Verificando...');
+            checksContainer.appendChild(item);
+            
+            try {
+                const proxyUrl = localStorage.getItem('proxyUrl');
+                const useProxy = localStorage.getItem('useProxy');
+                
+                const status = `URL: ${proxyUrl || 'default'}, Enabled: ${useProxy !== 'false'}`;
+                updateCheckItem(item, '✅', 'localStorage', status, 'success');
+            } catch (error) {
+                updateCheckItem(item, '⚠️', 'localStorage', 'No disponible en esta página', 'loading');
+            }
+        }
+        
+        function checkConfigProxy() {
+            const item = createCheckItem('⏳', 'config-proxy.js', 'Verificando...');
+            checksContainer.appendChild(item);
+            
+            if (typeof window.proxyConfig !== 'undefined') {
+                updateCheckItem(item, '✅', 'config-proxy.js', 'Archivo cargado correctamente', 'success');
+            } else {
+                updateCheckItem(item, '⚠️', 'config-proxy.js', 
+                    'No cargado. Asegúrate que está antes de config.js en index.html', 'loading');
+            }
+        }
+        
+        function checkConfig() {
+            const item = createCheckItem('⏳', 'config.js', 'Verificando...');
+            checksContainer.appendChild(item);
+            
+            if (typeof window.callGeminiAPI === 'function') {
+                updateCheckItem(item, '✅', 'config.js', 'Función callGeminiAPI disponible', 'success');
+            } else {
+                updateCheckItem(item, '❌', 'config.js', 'Función callGeminiAPI no encontrada', 'error');
+                allChecks = false;
+            }
+        }
+        
+        function updateFinalStatus() {
+            if (allChecks) {
+                const successBox = document.createElement('div');
+                successBox.className = 'success-box';
+                successBox.innerHTML = `
+                    <strong>✅ ¡TODO ESTÁ CONFIGURADO CORRECTAMENTE!</strong><br>
+                    Tu aplicación Gaming Vocab está lista para usar.
+                `;
+                checksContainer.appendChild(successBox);
+                openAppBtn.disabled = false;
+            } else {
+                const errorBox = document.createElement('div');
+                errorBox.className = 'error-box';
+                errorBox.innerHTML = `
+                    <strong>❌ Hay problemas que necesitan ser resueltos:</strong><br>
+                    <br>
+                    1. Asegúrate que Node.js está instalado<br>
+                    2. Inicia el servidor proxy: <code>cd server && node proxy.js</code><br>
+                    3. El servidor debe mostrar "Listo para procesar solicitudes..."<br>
+                    4. Recarga esta página
+                `;
+                checksContainer.appendChild(errorBox);
+            }
+        }
+        
+        function createCheckItem(icon, label, status) {
+            const item = document.createElement('div');
+            item.className = 'check-item loading';
+            item.innerHTML = `
+                <div class="icon">${icon}</div>
+                <div class="text">
+                    <span class="label">${label}</span>
+                    <span class="status">${status}</span>
+                </div>
+            `;
+            return item;
+        }
+        
+        function updateCheckItem(item, icon, label, status, className) {
+            item.className = `check-item ${className}`;
+            item.innerHTML = `
+                <div class="icon">${icon}</div>
+                <div class="text">
+                    <span class="label">${label}</span>
+                    <span class="status">${status}</span>
+                </div>
+            `;
+        }
+        
+        openAppBtn.onclick = () => {
+            window.location.href = 'index.html';
+        };
+        
+        // Ejecutar verificaciones al cargar
+        window.addEventListener('load', runChecks);
+    </script>
+</body>
+</html>

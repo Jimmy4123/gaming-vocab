@@ -1,0 +1,414 @@
+```
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║   🎮 GAMING VOCABULARY MASTER - v2.0                             ║
+║   Powered by Google Gemini 2.5 Flash ⚡                          ║
+║                                                                   ║
+║   Aprende 600+ Palabras de Videojuegos en Inglés                 ║
+║   con Inteligencia Artificial Avanzada                            ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 CONTENIDO DEL PROYECTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 ARCHIVOS PRINCIPALES:
+  
+  🔹 index.html              Página principal de la aplicación
+  🔹 styles.css              Estilos Gaming Neon completos
+  🔹 vocabulary.js           Base de datos de 600+ palabras
+  
+🔌 CONFIGURACIÓN E IA:
+  
+  🔹 config.js               Configuración de Gemini API
+  🔹 ai-teacher.js           Lógica del profesor IA
+  🔹 teacher-ui.js           Interfaz del profesor IA
+
+🎮 LÓGICA Y FUNCIONALIDADES:
+
+  🔹 script.js               Lógica principal de vocabulario
+  🔹 advanced.js             Recomendaciones inteligentes
+  🔹 advanced.js             Módulo de exámenes
+  
+📚 CONTENIDO EDUCATIVO:
+
+  🔹 stories.js              4+ Historias épicas
+  🔹 stories.js              4+ Diálogos interactivos
+  
+📖 DOCUMENTACIÓN:
+
+  🔹 INDEX.md                Este archivo (índice)
+  🔹 README.md               Documentación completa
+  🔹 QUICK_START.md          Guía rápida (5 minutos)
+  🔹 ARCHITECTURE.md         Documentación técnica
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ CARACTERÍSTICAS PRINCIPALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 VOCABULARIO
+  ✅ 600+ palabras organizadas
+  ✅ 8 categorías (Combate, Movimiento, Items, etc.)
+  ✅ Pronunciación IPA incluida
+  ✅ Audio para cada palabra 🔊
+  ✅ Significado en español
+  ✅ Ejemplo de uso en contexto
+  ✅ Búsqueda y filtrado en tiempo real
+
+🤖 PROFESOR IA (GEMINI 2.5 FLASH)
+  ✅ 5 funcionalidades principales
+  ✅ Chat libre con el profesor
+  ✅ Generador de historias personalizado
+  ✅ Generador de diálogos realistas
+  ✅ Explicador de palabras completo
+  ✅ Análisis inteligente de nivel
+  ✅ Respuestas en tiempo real
+
+📖 CONTENIDO EDUCATIVO
+  ✅ 4+ historias épicas en inglés
+  ✅ 4+ diálogos interactivos
+  ✅ Todas con traducción al español
+  ✅ Palabras clave destacadas
+  ✅ Dificultad variable (B-I-A)
+
+🤖 SISTEMA INTELIGENTE
+  ✅ Recomendaciones adaptativas
+  ✅ Identifica categorías débiles
+  ✅ Prioriza palabras por relevancia
+  ✅ Racha de estudio diaria
+  ✅ Estadísticas en vivo
+
+📝 EXÁMENES
+  ✅ 3 tipos: Traducción, Escucha, Diálogos
+  ✅ Evaluación automática
+  ✅ Feedback inmediato
+  ✅ Situaciones reales
+  ✅ Puntuación final
+
+📊 DASHBOARD
+  ✅ Barra de progreso visual
+  ✅ Estadísticas por categoría
+  ✅ Porcentaje completado
+  ✅ Contador de palabras
+  ✅ Reinicio opcional
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 7 SECCIONES PRINCIPALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  📚 VOCABULARIO
+    └─ Aprende 600+ palabras con pronunciación
+    └─ Busca, filtra, escucha y marca como estudiada
+    
+2️⃣  🤖 RECOMENDACIONES
+    └─ El sistema sugiere qué estudiar
+    └─ Basado en tu progreso y fortalezas/debilidades
+    
+3️⃣  📖 HISTORIAS
+    └─ Lee historias épicas en inglés
+    └─ Aprende vocabulario en contexto narrativo
+    
+4️⃣  💬 DIÁLOGOS
+    └─ Practica conversaciones realistas
+    └─ Con NPCs en situaciones de videojuegos
+    
+5️⃣  📝 EXÁMENES
+    └─ Pon a prueba tu conocimiento
+    └─ 3 tipos: Traducción, Escucha, Diálogos
+    
+6️⃣  🧠 PROFESOR IA
+    └─ Chat libre con inteligencia artificial
+    └─ Genera contenido personalizado
+    └─ Analiza tu nivel y da recomendaciones
+    
+7️⃣  📊 PROGRESO
+    └─ Visualiza tu avance detallado
+    └─ Estadísticas por categoría
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 CÓMO COMENZAR EN 3 PASOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: ABRE LA APLICACIÓN
+└─ Haz doble click en: index.html
+└─ O abre en navegador la ruta: 
+   file:///media/jimmy/LLAVE/wed/english-gaming-vocab/index.html
+
+PASO 2: COMIENZA EN VOCABULARIO
+└─ Selecciona la pestaña "📚 Vocabulario"
+└─ Estudia 10-15 palabras de una categoría
+└─ Haz click en 🔊 para escuchar pronunciación
+└─ Marca "Marcar como estudiada" cuando aprendas
+
+PASO 3: PRÁCTICA Y EXÁMENES
+└─ Lee una historia relacionada en "📖 Historias"
+└─ Practica diálogos en "💬 Diálogos"
+└─ Haz un examen en "📝 Exámenes"
+└─ Chatea con el profesor en "🧠 Profesor IA"
+
+RUTINA DIARIA RECOMENDADA:
+└─ 15-30 minutos diarios
+└─ Vocabulario (10 min) → Historias (5 min) → Examen (10 min)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎮 CATEGORÍAS DE VOCABULARIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚔️  COMBATE (50 palabras)
+    kill, damage, health, attack, defense, shield, weapon,
+    ammo, boss, enemy, spell, heal, stun, combo...
+
+🏃 MOVIMIENTO (20+ palabras)
+    jump, run, sprint, climb, swim, fly, dash,
+    crouch, direction, forward, backward, left, right...
+
+📦 OBJETOS (20+ palabras)
+    sword, potion, key, chest, gold, armor,
+    helmet, boots, bow, arrow, shield, ring...
+
+⚙️  MECÁNICAS (20+ palabras)
+    level, quest, checkpoint, save, load, pause,
+    difficulty, buff, debuff, cooldown, mana...
+
+🖥️  INTERFAZ (20+ palabras)
+    menu, button, select, confirm, cancel,
+    map, compass, HUD, zoom, FPS, lag, ping...
+
+👥 PERSONAJES (50 palabras)
+    warrior, mage, archer, merchant, blacksmith,
+    knight, paladin, priest, rogue, ranger, wizard...
+
+🌍 ENTORNO (50 palabras)
+    cave, forest, mountain, dungeon, castle,
+    temple, ruins, island, volcano, swamp...
+
+💎 AVANZADO (50 palabras)
+    combo, evasion, accuracy, frame-data,
+    hitbox, hurtbox, mixup, cancel, zoning...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 ESTADÍSTICAS DEL PROYECTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONTENIDO EDUCATIVO:
+  • Palabras: 600+
+  • Categorías: 8
+  • Historias: 4+
+  • Diálogos: 4+
+  • Exámenes: 3 tipos
+  • Preguntas: 8+
+
+TECNOLOGÍA:
+  • Frontend: HTML5, CSS3, JavaScript ES6
+  • Backend: Google Gemini 2.5 Flash
+  • Storage: Browser LocalStorage
+  • Responsive: 100%
+  • Dependencias externas: 0
+
+FUNCIONES IA:
+  • Chat libre: 1
+  • Generación de contenido: 2
+  • Análisis inteligente: 2
+  • Evaluación automática: 1
+  • Total: 5 funciones
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 FUNCIONALIDADES DEL PROFESOR IA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. CHAT LIBRE
+   ├─ Haz preguntas sobre vocabulario gaming
+   ├─ Respuestas personalizadas en español
+   ├─ Historial de conversación
+   └─ Totalmente interactivo
+
+2. GENERADOR DE HISTORIAS
+   ├─ Define un tema (batalla, rescate, etc.)
+   ├─ IA genera historia de 100-150 palabras
+   ├─ Inglés nivel intermedio
+   └─ Con palabras clave
+
+3. GENERADOR DE DIÁLOGOS
+   ├─ Elige tipo de NPC
+   ├─ IA crea diálogo realista
+   ├─ Formato bilingüe automático
+   └─ 2-3 intercambios
+
+4. EXPLICADOR DE PALABRAS
+   ├─ Escribe una palabra
+   ├─ Recibe explicación completa
+   ├─ Pronunciación, contextos, ejemplos
+   └─ Palabras relacionadas
+
+5. ANÁLISIS DE NIVEL
+   ├─ Evaluación inteligente de progreso
+   ├─ Identifica fortalezas y debilidades
+   ├─ 3 recomendaciones personalizadas
+   └─ Nivel actual: B/I/A
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 PLAN DE APRENDIZAJE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SEMANA 1: FUNDAMENTOS
+  □ 50 palabras estudiadas
+  □ 1 historia leída
+  □ 1 examen completado
+  
+SEMANA 2: CONSOLIDACIÓN
+  □ 100 palabras totales
+  □ 2 historias leídas
+  □ 2 exámenes completados
+  
+SEMANA 4: DOMINIO
+  □ 200 palabras totales
+  □ 4 historias leídas
+  □ 5 exámenes completados
+  
+MES 2: MAESTRÍA
+  □ 400 palabras totales
+  □ Todos los diálogos practicados
+  □ 10+ exámenes completados
+  
+META FINAL: COMPLETO
+  □ 600+ palabras dominadas
+  □ Nivel: AVANZADO
+  □ Conversación fluida en contexto gaming
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏆 LOGROS DESBLOQUEABLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NIVEL PRINCIPIANTE
+  🥉 100 palabras estudiadas (25%)
+  
+NIVEL INTERMEDIO
+  🥈 300 palabras estudiadas (50%)
+  
+NIVEL AVANZADO
+  🥇 600 palabras estudiadas (100%)
+  
+BONUS
+  ⭐ Maestro - Todos los exámenes completados
+  🎯 Perfeccionista - 100% en exámenes
+  🧠 Estudiante IA - 10+ chats con profesor
+  📚 Lector - Todas las historias leídas
+  🎭 Actor - Todos los diálogos memorizados
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💾 ALMACENAMIENTO Y PRIVACIDAD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ VENTAJAS
+  • LocalStorage: Datos guardados en tu dispositivo
+  • Sin servidor: No necesita base de datos
+  • Privado: Tus datos nunca salen de tu navegador
+  • Rápido: Acceso instantáneo a información
+  • Offline: Funciona sin internet (excepto IA)
+
+📍 UBICACIÓN DE DATOS
+  • Palabras estudiadas → localStorage
+  • Fecha de último acceso → localStorage
+  • Historial de chat → RAM (sesión)
+  • Configuración → localStorage
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 TECNOLOGÍA Y REQUISITOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REQUISITOS MÍNIMOS:
+  ✅ Navegador moderno (Chrome, Firefox, Safari, Edge)
+  ✅ JavaScript habilitado
+  ✅ LocalStorage habilitado
+  ✅ Conexión a internet (para IA)
+  ✅ Permiso de audio (para pronunciación)
+
+COMPATIBLE CON:
+  ✅ Windows
+  ✅ macOS
+  ✅ Linux
+  ✅ iOS (Safari)
+  ✅ Android (Chrome)
+
+TECNOLOGÍAS USADAS:
+  • HTML5 semántico
+  • CSS3 Grid/Flexbox
+  • JavaScript Vanilla (ES6+)
+  • Google Gemini 2.5 Flash API
+  • Web Speech API
+  • LocalStorage API
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+❓ PREGUNTAS FRECUENTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+P: ¿Necesito internet?
+R: Sí, para usar el profesor IA (Gemini API).
+   El vocabulario, historias y diálogos funcionan offline.
+
+P: ¿Mis datos son privados?
+R: Sí, se guardan solo en tu navegador.
+
+P: ¿Funciona en móvil?
+R: Sí, 100% responsive.
+
+P: ¿Cuánto tiempo para completar?
+R: 4-8 semanas con 15-30 min diarios.
+
+P: ¿Puedo cambiar dificultad?
+R: La IA adapta automáticamente según tu nivel.
+
+P: ¿Hay más palabras?
+R: El profesor IA puede generar nuevo contenido infinito.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📖 GUÍAS DISPONIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 QUICK_START.md
+   └─ Guía rápida (5 minutos)
+   └─ Pasos básicos para comenzar
+   └─ Ejemplos de uso
+   └─ Solución rápida de problemas
+
+📄 README.md
+   └─ Documentación completa
+   └─ Todas las características
+   └─ Recursos educativos
+   └─ Solución de problemas detallada
+
+📄 ARCHITECTURE.md
+   └─ Documentación técnica
+   └─ Estructura de código
+   └─ Flujos de datos
+   └─ Para desarrolladores
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎬 ¡COMIENZA AHORA!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPCIÓN 1: Doble click
+  └─ Haz doble click en: index.html
+
+OPCIÓN 2: Desde navegador
+  └─ Arrastra index.html a tu navegador
+
+OPCIÓN 3: URL directa
+  └─ file:///media/jimmy/LLAVE/wed/english-gaming-vocab/index.html
+
+═══════════════════════════════════════════════════════════════════════
+
+  🎮 GAMING VOCABULARY MASTER v2.0
+  Powered by Google Gemini 2.5 Flash ⚡
+  
+  Aprende 600+ palabras de videojuegos
+  Con inteligencia artificial avanzada
+  
+  Última actualización: 10 de Noviembre de 2025
+  Estado: PRODUCCIÓN
+  
+  ¡Bienvenido al viaje de aprendizaje gaming! 🚀
+
+═══════════════════════════════════════════════════════════════════════
+```

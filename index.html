@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Vocab - Aprende Inglés de Videojuegos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Gaming Vocabulary Master</h1>
+            <p>Powered by Google Gemini 2.5 Flash ⚡</p>
+            <p style="font-size: 0.95em; margin-top: 10px; opacity: 0.8;">Aprende 600+ palabras de videojuegos con un profesor de IA inteligente</p>
+            <div id="activeLevelDisplay" style="margin-top:8px; font-size:0.95em; opacity:0.9;">
+                Nivel activo: <strong id="activeLevel">A1</strong>
+            </div>
+        </header>
+
+        <!-- NAVEGACIÓN POR TABS -->
+        <nav class="tabs-navigation">
+            <button class="tab-btn active" data-tab="vocabulary">📚 Vocabulario</button>
+            <button class="tab-btn" data-tab="recommendations">🤖 Recomendaciones</button>
+            <button class="tab-btn" data-tab="stories">📖 Historias</button>
+            <button class="tab-btn" data-tab="dialogues">💬 Diálogos</button>
+            <button class="tab-btn" data-tab="exam">📝 Exámenes</button>
+            <button class="tab-btn" data-tab="teacher">🧠 Profesor IA</button>
+            <button class="tab-btn" data-tab="progress">📊 Progreso</button>
+        </nav>
+
+        <!-- TAB 1: VOCABULARIO -->
+        <div class="tab-content active" id="vocabulary">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar palabra...">
+                <select id="categoryFilter">
+                    <option value="">Todas las categorías</option>
+                    <option value="combat">⚔️ Combate</option>
+                    <option value="movement">🏃 Movimiento</option>
+                    <option value="items">📦 Objetos</option>
+                    <option value="game-mechanics">⚙️ Mecánicas</option>
+                    <option value="interface">🖥️ Interfaz</option>
+                    <option value="npcs">👥 Personajes</option>
+                    <option value="environment">🌍 Entorno</option>
+                    <option value="advanced">💎 Avanzado</option>
+                </select>
+            </div>
+
+            <div class="stats">
+                <p>Total de palabras: <strong id="totalWords">600</strong></p>
+                <p>Palabras estudiadas: <strong id="studiedWords">0</strong></p>
+                <p>Progreso: <strong id="progressPercent">0%</strong></p>
+            </div>
+
+            <div class="vocabulary-container" id="vocabContainer">
+                <!-- Las palabras se cargarán aquí con JavaScript -->
+            </div>
+        </div>
+
+        <!-- TAB 2: RECOMENDACIONES -->
+        <div class="tab-content" id="recommendations">
+            <div class="recommendations-section">
+                <h2>🤖 Palabras Recomendadas para Ti</h2>
+                <p>Basado en tu progreso y patrones de estudio</p>
+                <div class="recommendation-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Palabras No Estudiadas</div>
+                        <div class="stat-value" id="unstudiedCount">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Racha de Estudio</div>
+                        <div class="stat-value" id="streak">0 días</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Categoría Débil</div>
+                        <div class="stat-value" id="weakCategory">-</div>
+                    </div>
+                </div>
+                <div class="recommendations-container" id="recommendationsContainer">
+                    <!-- Las recomendaciones se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: HISTORIAS -->
+        <div class="tab-content" id="stories">
+            <div class="stories-section">
+                <h2>📖 Mini Historias Épicas</h2>
+                <p>Aprende vocabulario a través de historias emocionantes de videojuegos</p>
+                <div id="storyDetailContainer" style="display: none;">
+                    <!-- La historia expandida se mostrará aquí -->
+                </div>
+                <div class="stories-grid" id="storiesGrid">
+                    <!-- Las historias se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: DIÁLOGOS -->
+        <div class="tab-content" id="dialogues">
+            <div class="dialogues-section">
+                <h2>💬 Diálogos Interactivos</h2>
+                <p>Practica conversaciones reales con NPCs de videojuegos</p>
+                <div id="dialogueDetailContainer" style="display: none;">
+                    <!-- El diálogo expandido se mostrará aquí -->
+                </div>
+                <div class="dialogues-grid" id="dialoguesGrid">
+                    <!-- Los diálogos se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: EXÁMENES -->
+        <div class="tab-content" id="exam">
+            <div class="exam-section">
+                <h2>📝 Exámenes de Situaciones Reales</h2>
+                    <div class="exam-selector">
+                    <button class="exam-type-btn active" onclick="startExamType('translation', this)">🌐 Traducción</button>
+                    <button class="exam-type-btn" onclick="startExamType('listening', this)">🔊 Escucha</button>
+                    <button class="exam-type-btn" onclick="startExamType('dialogue', this)">💬 Diálogos</button>
+                </div>
+                <div id="examContainer" class="exam-container">
+                    <!-- El examen se cargará aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: PROFESOR IA -->
+        <div class="tab-content" id="teacher">
+            <div class="teacher-section">
+                <h2>🧠 Profesor de IA Gemini 2.5</h2>
+                <p>Tu asistente inteligente powered by Google Gemini</p>
+                
+                <div class="teacher-options">
+                    <button class="teacher-btn" onclick="openTeacherChat()">💬 Chat con Profesor</button>
+                    <button class="teacher-btn" onclick="openGenerateStory()">📚 Generar Historia</button>
+                    <button class="teacher-btn" onclick="openGenerateDialogue()">🎭 Generar Diálogo</button>
+                    <button class="teacher-btn" onclick="openWordExplanation()">📖 Explicar Palabra</button>
+                    <button class="teacher-btn" onclick="analyzeMyLevel()">📊 Analizar Mi Nivel</button>
+                    <button class="teacher-btn" onclick="openLevelSettings()">⚙️ Ajustes de Nivel</button>
+                    <button class="teacher-btn" onclick="openGenerateVocab()">➕ Generar Vocabulario</button>
+                    <button class="teacher-btn" onclick="openGenerateExam()">🧾 Generar Exámenes</button>
+                </div>
+                
+                <!-- Chat del Profesor -->
+                <div id="teacherChat" class="teacher-chat" style="display: none;">
+                    <div class="chat-window" id="chatMessages"></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Pregunta algo sobre vocabulario gaming..." class="chat-input">
+                        <button onclick="sendTeacherMessage()" class="btn-submit">Enviar</button>
+                    </div>
+                </div>
+                
+                <!-- Generador de Historias -->
+                <div id="storyGenerator" class="teacher-module" style="display: none;">
+                    <label>Tema de la Historia:</label>
+                    <input type="text" id="storyTheme" placeholder="ej: batalla contra dragón, rescate de princesa..." class="exam-input">
+                    <button onclick="aiGenerateStory()" class="btn-submit">✨ Generar Historia</button>
+                    <div id="generatedStory" class="teacher-output"></div>
+                </div>
+                
+                <!-- Generador de Diálogos -->
+                <div id="dialogueGenerator" class="teacher-module" style="display: none;">
+                    <label>Tipo de NPC:</label>
+                    <select id="npcType" class="exam-input">
+                        <option value="merchant">Comerciante</option>
+                        <option value="blacksmith">Herrero</option>
+                        <option value="guard">Guardia</option>
+                        <option value="priestess">Sacerdotisa</option>
+                        <option value="mage">Mago</option>
+                    </select>
+                    <button onclick="aiGenerateDialogue()" class="btn-submit">🎭 Generar Diálogo</button>
+                    <div id="generatedDialogue" class="teacher-output"></div>
+                </div>
+                
+                <!-- Explicador de Palabras -->
+                <div id="wordExplainer" class="teacher-module" style="display: none;">
+                    <label>Palabra a Explicar:</label>
+                    <input type="text" id="wordToExplain" placeholder="ej: combo, dodge, cooldown..." class="exam-input">
+                    <button onclick="aiExplainWord()" class="btn-submit">📖 Explicar</button>
+                    <div id="wordExplanation" class="teacher-output"></div>
+                </div>
+                
+                <!-- Análisis de Nivel -->
+                <div id="levelAnalysis" class="teacher-module" style="display: none;">
+                    <button onclick="aiAnalyzeLevel()" class="btn-submit">🔍 Analizar Mi Nivel</button>
+                    <div id="analysisResult" class="teacher-output"></div>
+                </div>
+
+                <!-- Ajustes de Nivel -->
+                <div id="levelSettings" class="teacher-module" style="display: none;">
+                    <h3>Configuración de Nivel</h3>
+                    <div style="margin-bottom:10px;">
+                        <label><input type="radio" name="levelMode" value="manual" checked> Manual</label>
+                        <label style="margin-left:15px;"><input type="radio" name="levelMode" value="auto"> Automático (IA + algoritmo)</label>
+                    </div>
+
+                    <div id="manualSettings">
+                        <label>Selecciona tu nivel (manual):</label>
+                        <select id="manualLevelSelect" class="exam-input">
+                            <option value="A1">A1 - Beginner</option>
+                            <option value="A2">A2 - Elementary</option>
+                            <option value="B1">B1 - Intermediate</option>
+                            <option value="B2">B2 - Upper-Intermediate</option>
+                            <option value="C1">C1 - Advanced</option>
+                            <option value="C2">C2 - Proficient</option>
+                        </select>
+                    </div>
+
+                    <div id="advancedSettings" style="margin-top:15px;">
+                        <h4>Configuración profunda</h4>
+                        <p style="font-size:0.9em; opacity:0.9;">Ajusta los porcentajes máximos de vocabulario que corresponden a cada nivel (0-100%).</p>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                            <label>A1 max %<input type="number" id="thA1" value="12" min="1" max="100"></label>
+                            <label>A2 max %<input type="number" id="thA2" value="25" min="1" max="100"></label>
+                            <label>B1 max %<input type="number" id="thB1" value="50" min="1" max="100"></label>
+                            <label>B2 max %<input type="number" id="thB2" value="75" min="1" max="100"></label>
+                            <label>C1 max %<input type="number" id="thC1" value="90" min="1" max="100"></label>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:15px;">
+                        <button class="btn-submit" id="saveLevelSettings">Guardar Ajustes</button>
+                        <button class="btn-submit" id="applyAutoDetect">Detectar Nivel Automáticamente</button>
+                        <button class="btn-submit" id="runDiagnostics">Mostrar Diagnósticos</button>
+                        <div id="levelSettingsMessage" style="margin-top:10px;"></div>
+                    </div>
+                </div>
+                <!-- Generador de Vocabulario (IA) -->
+                <div id="vocabGenerator" class="teacher-module" style="display: none; margin-top:12px;">
+                    <h4>Generar Vocabulario</h4>
+                    <label>Número de palabras:</label>
+                    <input type="number" id="genVocabCount" value="20" min="1" max="100" class="exam-input">
+                    <label>Nivel objetivo:</label>
+                    <select id="genVocabLevel" class="exam-input">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B1" selected>B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                    </select>
+                    <label>Categorías (coma-separadas, opcional):</label>
+                    <input type="text" id="genVocabCats" placeholder="combat,items,interface" class="exam-input">
+                    <button class="btn-submit" onclick="aiGenerateVocab()">➕ Generar y Añadir</button>
+                    <div id="genVocabOutput" class="teacher-output"></div>
+                </div>
+
+                <!-- Generador de Exámenes (IA) -->
+                <div id="examGenerator" class="teacher-module" style="display: none; margin-top:12px;">
+                    <h4>Generar Exámenes</h4>
+                    <label>Número de escenarios:</label>
+                    <input type="number" id="genExamCount" value="5" min="1" max="30" class="exam-input">
+                    <label>Nivel objetivo:</label>
+                    <select id="genExamLevel" class="exam-input">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B1" selected>B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                    </select>
+                    <button class="btn-submit" onclick="aiGenerateExams()">🧾 Generar y Añadir</button>
+                    <div id="genExamOutput" class="teacher-output"></div>
+                </div>
+            </div>
+        </div>
+            <div class="progress-section">
+                <h2>📊 Tu Progreso</h2>
+                <div class="progress-chart">
+                    <div class="chart-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p id="progressText">0 / 600 palabras estudiadas</p>
+                    </div>
+                </div>
+                <div class="category-progress">
+                    <h3>Progreso por Categoría</h3>
+                    <div id="categoryProgressList"></div>
+                </div>
+                <button class="btn-reset" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config-proxy.js"></script>
+    <script src="config.js"></script>
+    <script src="vocabulary.js"></script>
+    <script src="settings.js"></script>
+    <script src="ai-teacher.js"></script>
+    <script src="stories.js"></script>
+    <script src="advanced.js"></script>
+    <script src="script.js"></script>
+    <script src="teacher-ui.js"></script>
+</body>
+</html>
