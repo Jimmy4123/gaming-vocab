@@ -8,14 +8,17 @@ Este documento te ayuda a diagnosticar y resolver los problemas con la API de Ge
 
 ## 🧪 PASO 1: Verificar la Configuración
 
-### ¿La API Key es correcta?
+### ¿La API Key está configurada correctamente?
 
-1. Abre `config.js`
-2. Verifica que la línea:
-```javascript
-const GEMINI_API_KEY = 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ';
+Importante: la API Key no debe estar almacenada en archivos del cliente ni en el repositorio.
+
+1. Si usas el proxy/local server: asegúrate de tener la variable de entorno `GEMINI_API_KEY` configurada en el servidor.
+2. Si despliegas en Vercel: añade `GEMINI_API_KEY` en Project → Settings → Environment Variables.
+
+Ejemplo (no lo agregues al repositorio):
+```bash
+export GEMINI_API_KEY="tu_api_key_aqui"
 ```
-**Sea exactamente así** (sin espacios extra)
 
 ### ¿La URL del modelo es correcta?
 

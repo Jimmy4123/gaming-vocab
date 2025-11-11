@@ -3,28 +3,29 @@
 
 // OPCIÓN 1: Gemini 2.0 Flash (Recomendado - Más estable)
 const GEMINI_CONFIG_1 = {
-    key: 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ',
+    // key must be provided via environment variable (process.env.GEMINI_API_KEY)
+    key: process.env.GEMINI_API_KEY,
     url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent',
     name: 'Gemini 2.0 Flash'
 };
 
 // OPCIÓN 2: Gemini 1.5 Flash (Alternativa estable)
 const GEMINI_CONFIG_2 = {
-    key: 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ',
+    key: process.env.GEMINI_API_KEY,
     url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
     name: 'Gemini 1.5 Flash'
 };
 
 // OPCIÓN 3: Gemini 1.5 Pro (Si Flash no funciona)
 const GEMINI_CONFIG_3 = {
-    key: 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ',
+    key: process.env.GEMINI_API_KEY,
     url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent',
     name: 'Gemini 1.5 Pro'
 };
 
 // OPCIÓN 4: Gemini Pro (Versión v1 más compatible)
 const GEMINI_CONFIG_4 = {
-    key: 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ',
+    key: process.env.GEMINI_API_KEY,
     url: 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent',
     name: 'Gemini Pro (v1)'
 };

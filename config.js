@@ -1,5 +1,5 @@
 // Configuración de Gemini API - USANDO PROXY
-const GEMINI_API_KEY = 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ';
+// Nota: la API key no debe estar en el cliente. El cliente usa el proxy para comunicarse con Gemini.
 const PROXY_URL = typeof localStorage !== 'undefined' ? localStorage.getItem('proxyUrl') || 'http://localhost:3000' : 'http://localhost:3000';
 const USE_PROXY = true; // Siempre usar el proxy
 

@@ -62,12 +62,14 @@ english-gaming-vocab/
 
 ### 1. CONFIG.JS - Configuración
 ```javascript
-GEMINI_API_KEY = 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ'
+// Nota: La API Key no debe estar en el repositorio ni en el cliente.
+// Configure GEMINI_API_KEY como variable de entorno en el servidor o en Vercel.
+GEMINI_API_KEY = process.env.GEMINI_API_KEY
 GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
 
 Función Principal:
   callGeminiAPI(prompt, systemPrompt)
-    └─> Realiza petición HTTP a Gemini
+    └─> Realiza petición HTTP a Gemini (a través del proxy en producción)
     └─> Retorna respuesta de texto
 ```
 

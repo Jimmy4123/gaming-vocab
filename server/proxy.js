@@ -9,7 +9,11 @@ const https = require('https');
 const url = require('url');
 
 // Configuración
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyBJGAFO9nl7STzcG_0cGs8Jyvl6yN0aZWQ';
+// La API key debe venir de una variable de entorno (no almacenada en el repositorio)
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+if (!GEMINI_API_KEY) {
+    console.warn('⚠️ WARNING: GEMINI_API_KEY no está definida en el entorno. Configure GEMINI_API_KEY en tu servidor o en Vercel.');
+}
 const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com';
 const PORT = process.env.PORT || 3000;
 const ALLOWED_MODELS = ['gemini-2.0-flash-001', 'gemini-2.5-flash-001'];
